@@ -14,7 +14,7 @@ test_login_rules.py, and let the tests find the problem.
 
 def is_locked_out(failed_attempts, limit):
     """True when failed_attempts is limit or more."""
-    return failed_attempts > limit
+    return failed_attempts >= limit
 
 
 def session_expired(minutes_idle, timeout):
@@ -32,6 +32,7 @@ def risk_level(failed_attempts):
         return "LOW"
 
 
-attempts = int(input("Failed attempts: "))
-print("Locked out (limit 5): " + str(is_locked_out(attempts, 5)))
-print("Risk level:           " + risk_level(attempts))
+if __name__ == '__main__': 
+    attempts = int(input("Failed attempts: "))
+    print("Locked out (limit 5): " + str(is_locked_out(attempts, 5)))
+    print("Risk level:           " + risk_level(attempts))
